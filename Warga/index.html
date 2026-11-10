@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Dashboard SiapSiaga</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <style>
+            header {
+                background-color: #626F47;
+                color: #F5ECD5;
+                margin : 0;
+                padding : 10px;            
+                font-weight: bold;
+                font-size: 40px;
+                position: sticky;
+            }
+            body {
+                font-family: 'Inter', sans-serif;
+                margin : 0;
+            }
+            main {
+                display: flex;
+                margin : 20px;
+                flex-direction: column;
+            }
+            #greetings {
+                span:nth-child(1) {
+                    font-weight: bold;
+                    font-size: 25px;
+                }
+                span:nth-child(2) {
+                    color : #5D5D5D;
+                }
+            }
+            .tambah-laporan {
+                margin-top: 20px;
+                display: flex;
+                flex-direction: row;
+                padding: 10px;
+                background-color: #F5ECD5;
+                border-radius: 10px;
+                align-items: center;
+                #teks-tambah {
+                    span:nth-child(1) {
+                        font-size: 25px;
+                        font-weight: bold;
+                        color:#626F47;
+                    }
+                }
+                input {
+                    width:70px;
+                }
+            }
+            #teks-statistik {
+                margin-top: 20px;
+                span:nth-child(1) {
+                    font-size: 25px;
+                    font-weight: bold;
+                }
+
+            }
+            #jumlah-kejadian {
+                margin-top: 10px;
+                padding: 10px;
+                background-color: #626F47;
+                border-radius: 10px;
+                color :#F5ECD5;
+                font-weight: bold;
+            }
+            .pengumuman {
+                margin-top: 20px;
+                #teks-pengumuman {
+                    span:nth-child(1) {
+                        font-size: 25px;
+                        font-weight: bold;
+                    }
+                }
+                .card {
+                    margin-top: 10px;
+                    display: flex;
+                    flex-direction: column;
+                    background-color: #F5ECD5;
+                    color : #626F47;
+                    border-radius: 10px;
+                    padding: 10px;
+                    span:nth-child(1) {
+                        font-weight: bold;
+                        margin-bottom: 20px;
+                    }
+                    span:nth-child(2) {
+                        font-weight: bold;
+                        color : red;
+                    }
+                    button {
+                        font-weight: bold;
+                        background-color: #626F47;
+                        color : white;
+                        border-radius: 10px;
+                        padding: 10px;
+                        margin-top: 20px;
+                        padding-left: 20px;
+                        padding-right: 20px;
+                    }
+
+                }
+            }
+            nav {
+                background-color: #F5ECD5;
+                margin-bottom: 0;
+                display: flex;
+                justify-content: space-evenly;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                padding: 10px;
+                box-sizing: border-box;
+                height: 60px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>SiapSiaga</header>
+        <main>
+            <div id="greetings">
+                <span>Halo, </span><span th:text="${name}"></span>
+                <br>
+                <span>Sudah siap lapor bencana?</span>
+            </div>
+            <div class="tambah-laporan">
+                <div id="teks-tambah">
+                    <span>Tambah Laporan</span>
+                    <br>
+                    <span>Tekan tombol + untuk laporkan bencana</span>
+                </div>
+                <a href="instruksi.html">
+                    <img src="assets/icon-tambah.png" value="tambah">
+                </a>
+            </div>
+            <div class="statistik-bencana">
+                <div id="teks-statistik">
+                    <span>Statistik Bencana</span>
+                    <br>
+                    <span>Jumlah kejadian di tahun ini</span>
+                </div>
+                <div id="jumlah-kejadian">
+                    <span th:text="${jenis-bencana}"></span>
+                    <span th:text="${jenis-bencana}"></span>
+                </div>
+            </div>
+            <div class="pengumuman">
+                <div id="teks-pengumuman">
+                    <span>Pengumuman</span>
+                    <br>
+                    <span>Gulir ke bawah untuk lihat seluruh pengumuman</span>
+                </div>
+                <div class="card" th:each="pengumuman : ${pengumumanList}"?>
+                    <div class="card-pengumuman">
+                        <span th:text="${pengumuman.jenis}"></span>
+                        <span th:text="${pengumuman.lokasi}"></span>
+                        <span th:text="${pengumuman.tanggal}"></span>
+                        <span th:text="${pengumuman.catatan}"></span>
+                        <button id="detail-pengumuman">Lihat Detail</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <nav>
+            <a href="index.html">
+                <img src="assets/dashboard-green.png" value="dashboard">
+            </a>
+            <a href="report.html">
+                <img src="assets/report-black.png" value="laporan">
+            </a>
+            <a href="profile.html">
+                <img src="assets/profile-black.png" value="profil">
+            </a>
+        </nav>
+    </body>
+</html>
+
