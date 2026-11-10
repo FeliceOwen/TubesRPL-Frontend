@@ -91,11 +91,11 @@
                     color : #626F47;
                     border-radius: 10px;
                     padding: 10px;
-                    span:nth-child(1) {
+                    h2 {
                         font-weight: bold;
                         margin-bottom: 20px;
                     }
-                    span:nth-child(2) {
+                    span:nth-child(3) {
                         font-weight: bold;
                         color : red;
                     }
@@ -160,12 +160,13 @@
                 </div>
                 <div class="card" th:each="pengumuman : ${pengumumanList}"?>
                     <div class="card-pengumuman">
-                        <span th:text="${pengumuman.jenis}"></span>
+                        <h2 th:text="${pengumuman.jenis}"></h2>
                         <span th:text="${pengumuman.lokasi}"></span>
                         <span th:text="${pengumuman.tanggal}"></span>
                         <span th:text="${pengumuman.catatan}"></span>
                         <button id="detail-pengumuman">Lihat Detail</button>
                     </div>
+                    <img th:src="@{'/assets/' + ${pengumuman.gambar}}" alt="gambar-pengumuman">
                 </div>
             </div>
         </main>
