@@ -27,11 +27,12 @@
                 flex-direction: column;
             }
             #greetings {
-                span:nth-child(1) {
+                h1 {
                     font-weight: bold;
                     font-size: 25px;
+                    margin-bottom:5px;
                 }
-                span:nth-child(2) {
+                span {
                     color : #5D5D5D;
                 }
             }
@@ -44,10 +45,12 @@
                 border-radius: 10px;
                 align-items: center;
                 #teks-tambah {
-                    span:nth-child(1) {
+                    h1 {
+                        margin-top: 0;
                         font-size: 25px;
                         font-weight: bold;
                         color:#626F47;
+                        margin-bottom:5px;
                     }
                 }
                 input {
@@ -56,9 +59,10 @@
             }
             #teks-statistik {
                 margin-top: 20px;
-                span:nth-child(1) {
+                h1 {
                     font-size: 25px;
                     font-weight: bold;
+                    margin-bottom:5px;
                 }
 
             }
@@ -73,9 +77,10 @@
             .pengumuman {
                 margin-top: 20px;
                 #teks-pengumuman {
-                    span:nth-child(1) {
+                    h1 {
                         font-size: 25px;
                         font-weight: bold;
+                        margin-bottom:5px;
                     }
                 }
                 .card {
@@ -126,24 +131,21 @@
         <header>SiapSiaga</header>
         <main>
             <div id="greetings">
-                <span>Halo, </span><span th:text="${name}"></span>
-                <br>
+                <h1>Halo, <span th:text="${name}"></span></h1>
                 <span>Sudah siap lapor bencana?</span>
             </div>
             <div class="tambah-laporan">
                 <div id="teks-tambah">
-                    <span>Tambah Laporan</span>
-                    <br>
+                    <h1>Tambah Laporan</h1>
                     <span>Tekan tombol + untuk laporkan bencana</span>
                 </div>
                 <a href="instruksi.html">
-                    <img src="assets/icon-tambah.png" value="tambah">
+                    <img src="../assets/icon-tambah.png" value="tambah">
                 </a>
             </div>
             <div class="statistik-bencana">
                 <div id="teks-statistik">
-                    <span>Statistik Bencana</span>
-                    <br>
+                    <h1>Statistik Bencana</h1>
                     <span>Jumlah kejadian di tahun ini</span>
                 </div>
                 <div id="jumlah-kejadian">
@@ -153,8 +155,7 @@
             </div>
             <div class="pengumuman">
                 <div id="teks-pengumuman">
-                    <span>Pengumuman</span>
-                    <br>
+                    <h1>Pengumuman</h1>
                     <span>Gulir ke bawah untuk lihat seluruh pengumuman</span>
                 </div>
                 <div class="card" th:each="pengumuman : ${pengumumanList}"?>
@@ -170,13 +171,13 @@
         </main>
         <nav>
             <a href="index.html">
-                <img src="assets/dashboard-green.png" value="dashboard">
+                <img src="../assets/dashboard-green.png" value="dashboard">
             </a>
             <a href="report.html">
-                <img src="assets/report-black.png" value="laporan">
+                <img src="../assets/report-black.png" value="laporan">
             </a>
             <a href="profile.html">
-                <img src="assets/profile-black.png" value="profil">
+                <img src="../assets/profile-black.png" value="profil">
             </a>
         </nav>
     </body>
