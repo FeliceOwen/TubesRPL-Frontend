@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masuk | SiapSiaga</title>
+    <meta name="description" content="Masuk ke akun SiapSiaga untuk melaporkan dan memantau bencana di sekitar Anda.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" th:href="@{/style.css}">
+</head>
+<body class="page">
+    <main class="container">
+        <section class="card" aria-labelledby="page-title">
+            <h1 class="brand" id="page-title">SiapSiaga</h1>
+
+            <div class="alert alert-error" id="login-alert" role="alert" th:attr="data-error=${error}" hidden>
+                <span class="alert-msg" id="login-alert-message"></span>
+            </div>
+
+            <form class="form" id="login-form" action="#" th:action="@{/login}" th:object="${loginRequest}" method="post" novalidate>
+                <div class="field">
+                    <label class="label" for="nik">NIK</label>
+                    <input
+                        class="input"
+                        type="text"
+                        id="nik"
+                        name="nik"
+                        th:field="*{nik}"
+                        inputmode="numeric"
+                        autocomplete="username"
+                        maxlength="16"
+                        placeholder="Masukkan NIK Anda"
+                        required
+                    >
+                </div>
+
+                <div class="field">
+                    <label class="label" for="password">Password</label>
+                    <div class="input-wrap">
+                        <input
+                            class="input input-action"
+                            type="password"
+                            id="password"
+                            name="password"
+                            th:field="*{password}"
+                            autocomplete="current-password"
+                            placeholder="Masukkan password Anda"
+                            required
+                        >
+                        <button
+                            type="button"
+                            class="toggle"
+                            id="password-toggle"
+                            aria-label="Tampilkan password"
+                            aria-pressed="false"
+                            aria-controls="password"
+                        ></button>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary submit" type="submit">Masuk</button>
+            </form>
+
+            <p class="alt">
+                Belum memiliki akun? <a class="alt-link" href="register.html">Buat akun</a>
+            </p>
+        </section>
+    </main>
+
+    <!-- Icon dari Flaticon:
+         Eye icons created by Gregor Cresnar - https://www.flaticon.com/free-icons/eye
+         Hide icons created by sonnycandra - https://www.flaticon.com/free-icons/hide
+         Error icons created by hqrloveq - https://www.flaticon.com/free-icons/error
+         Menu icons created by Magnific - https://www.flaticon.com/free-icons/menu
+         Warning icons created by Good Ware - https://www.flaticon.com/free-icons/warning -->
+    <script src="script.js" th:src="@{/script.js}"></script>
+</body>
+</html>

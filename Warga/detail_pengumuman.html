@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Dashboard SiapSiaga</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <style>
+            header {
+                display: flex;
+                margin: 30px;
+                a {
+                    margin-top: 5px;
+                }
+                h1 {
+                    margin: 0;
+                    margin-left: 10px;
+                    font-weight: bold;
+                    font-size: 25px;
+                }
+            }
+            body {
+                font-family: 'Inter', sans-serif;
+                margin : 0;
+            }
+            main {
+              #detail-pengumuman {
+                background-color:#F5ECD5;
+                padding: 10px;
+                padding-top:2px;
+                border-radius: 10px;
+                margin: 20px;
+                h3 {
+                    color:#5D5D5D;
+                }
+                h2 {
+                    margin-bottom: 0;
+                }
+                #lokasi-pengumuman {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 30px;
+                    #nama-lokasi {
+                        margin-top: 15px;
+                    }
+
+                }
+              }
+            }
+            
+        </style>
+    </head>
+    <body>
+        <header>
+            <a href="index.html">
+                <img src="../assets/back-black.png" value="back">
+            </a>
+            <h1>Detail Pengumuman</h1>
+        </header>
+        <main>
+            <h1 th:text="${pengumuman.jenis}"></h1>
+            <div id="detail-pengumuman">
+                <h2>Lokasi Terdampak</h2>
+                <div id="lokasi-pengumuman">
+                    <div id="tipe-lokasi">
+                        <h3>Provinsi</h3>
+                        <h3>Kota / Kabupaten</h3>
+                        <h3>Detail Lokasi</h3>
+                    </div>
+                    <div id="nama-lokasi">
+                        <span th:text="${provinsi-pengumuman}"></span>
+                        <span th:text="${kotakab-pengumuman}"></span>
+                        <span th:text="${detail-lokasi-pengumuman}"></span>
+                    </div>
+                </div>
+
+                <h2>Waktu Kejadian Pertama</h2>
+                
+                <h2>Foto Kejadian</h2>
+                <h2>Catatan Petugas</h2>
+            </div>
+        </main>
+    </body>
+</html>
+
