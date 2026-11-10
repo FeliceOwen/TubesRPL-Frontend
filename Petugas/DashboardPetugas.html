@@ -4,14 +4,16 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>SiapSiaga</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-        <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <style>
             * {
                 box-sizing: border-box;
                 margin: 0;
                 padding: 0;
-                font-family: 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             }
 
             body {
@@ -23,6 +25,14 @@
             }
 
             header {
+                background-color: #626F47;
+                width: 100%;
+                padding: 25px 40px;
+                display: block;
+            }
+
+            header h1 {
+                color: #F5ECD5;
                 font-size: 2rem;
                 font-weight: 700;
             }
@@ -53,9 +63,169 @@
             }
 
             .stat-card {
-                background-color: #f6eedb;
+                background-color: #F5ECD5;
+                border-radius: 12px;
+                padding: 25px 15px;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                height: 130px;
             }
 
+            .stat-card .label {
+                font-size: 1.1rem;
+                color: #000;
+                font-weight: 500;
+                line-height: 1.2;
+            }
+
+            .stat-card .value {
+                font-size: 2.2rem;
+                font-weight: 800;
+                color: #000;
+            }
+
+            .announcement-card {
+                background-color: #F5ECD5;
+                border-radius: 12px;
+                padding: 24px;
+                display: flex;
+                gap: 24px;
+                position: relative;
+                align-items: flex-start;
+            }
+
+            .announcement-img {
+                width: 180px;
+                height: 180px;
+                border-radius: 12px;
+                object-fit: cover;
+            }
+
+            .announcement-content {
+                flex: 1;
+            }
+
+            .announcement-title {
+                font-size: 2rem;
+                color: #626F47;
+                font-weight: 700;
+                margin-bottom: 25px;
+            }
+
+            .announcement-meta {
+                color: #666;
+                font-size: 0.95rem;
+                line-height: 1.4;
+                margin-bottom: 25px;
+            }
+
+            .announcement-note {
+                font-size: 0.95rem;
+            }
+
+            .note-title {
+                font-weight: 700;
+                color: #333;
+                display: block;
+                margin-bottom: 2px;
+            }
+
+            .btn-edit {
+                position: absolute;
+                top: 24px;
+                right: 24px;
+                background-color: #626F47;
+                color: white;
+                border: none;
+                padding: 8px 24px;
+                border-radius: 8px;
+                font-weight: 600;
+                cursor: pointer;
+                font-size: 0.95rem;
+            }
+
+            .btn-edit:hover {
+                background-color: #4a5739;
+            }
+
+            nav.bottom-nav {
+                background-color: #F5ECD5;
+                border-top: 1px solid #e0d7c3;
+                padding: 15px 0;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+            }
+
+            .nav-item {
+                color: #626F47;
+                font-size: 2rem;
+                text-decoration: none;
+                transition: color 0.2s;
+            }
+
+            .nav-item:hover {
+                color: #3f4a30;
+            }
         </style>
     </head>
+    <body>
+        <header>
+            <h1>SiapSiaga</h1>
+        </header>
+
+        <main>
+            <section>
+                <h2>Statistik Bencana</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="label">Kebakaran</div>
+                        <div class="value"></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="label">Gempa</div>
+                        <div class="value"></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="label">Keracunan<br>Makanan</div>
+                        <div class="value"></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="label">Banjir</div>
+                        <div class="value"></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="label">Tanah<br>Longsor</div>
+                        <div class="value"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Pengumuman</h2>
+                <div class="announcement-card">
+                    <img src="">
+                    <div class="announcement-content">
+                        <h3 class="announcement-title"></h3>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <nav class="bottom-nav">
+            <a href="#" class="nav-item">
+                <img src="../assets/dashboard-green.png" alt="Beranda" class="nav-icon">
+            </a>
+
+             <a href="#" class="nav-item">
+                <img src="../assets/report-black.png" alt="Laporan" class="nav-icon">
+            </a>
+
+            <a href="#" class="nav-item">
+                <img src="../assets/profile-black.png" alt="Profil" class="nav-icon">
+            </a>
+        </nav>
+    </body>
 </html>
