@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" xmlns="https://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>SiapSiaga</title>
+        <title>Dashboard Petugas SiapSiaga</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -33,8 +33,9 @@
 
             header h1 {
                 color: #F5ECD5;
-                font-size: 2rem;
+                font-size: 2.5rem;
                 font-weight: 700;
+                letter-spacing: -0.5px;
             }
 
             main {
@@ -182,34 +183,56 @@
                 <div class="stats-grid">
                     <div class="stat-card">
                         <div class="label">Kebakaran</div>
-                        <div class="value"></div>
+                        <div class="value" th:text="${statistik['Kebakaran']}">0</div>
                     </div>
                     <div class="stat-card">
                         <div class="label">Gempa</div>
-                        <div class="value"></div>
+                        <div class="value" th:text="${statistik['Gempa']}">0</div>
                     </div>
                     <div class="stat-card">
                         <div class="label">Keracunan<br>Makanan</div>
-                        <div class="value"></div>
+                        <div class="value" th:text="${statistik['Keracunan Makanan']}">0</div>
                     </div>
                     <div class="stat-card">
                         <div class="label">Banjir</div>
-                        <div class="value"></div>
+                        <div class="value" th:text="${statistik['Banjir']}">0</div>
                     </div>
                     <div class="stat-card">
                         <div class="label">Tanah<br>Longsor</div>
-                        <div class="value"></div>
+                        <div class="value" th:text="${statistik['Tanah Longsor']}">0</div>
                     </div>
                 </div>
             </section>
 
             <section>
                 <h2>Pengumuman</h2>
-                <div class="announcement-card">
-                    <img src="">
+                <div class="announcement-card" th:if="${pengumuman != null}">
+                    <img src="${pengumuman.foto}" alt="Foto Bencana" class="announcement-img">
                     <div class="announcement-content">
-                        <h3 class="announcement-title"></h3>
+                        <h3 class="announcement-title" th:text="${pengumuman.judul}">Judul Pengumuman</h3>
+                        <div class="announcement-meta">
+                            <p>
+                                Tanggal:
+                                <span th:text="${pengumuman.tanggalLaporan}"></span>
+                            </p>
+
+                            <p>
+                                Lokasi:
+                                <span th:text="${pengumuman.lokasi}"></span>
+                            </p>
+
+                            <p>
+                                Jenis Bencana:
+                                <span th:text="${pengumuman.jenisBencana}"></span>
+                            </p>
+                        </div>
+
+                        <div class="announcement-note">
+                            <span class="note-title">Catatan Petugas:</span>
+                            <span th:text="${pengumuman.catatanPetugas}"></span>
+                        </div>
                     </div>
+                    <a href="EditPengumuman.html" class="btn-edit">Edit</a>
                 </div>
             </section>
         </main>
