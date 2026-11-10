@@ -86,7 +86,7 @@
                 .card {
                     margin-top: 10px;
                     display: flex;
-                    flex-direction: column;
+                    flex-direction: row;
                     background-color: #F5ECD5;
                     color : #626F47;
                     border-radius: 10px;
@@ -99,7 +99,7 @@
                         font-weight: bold;
                         color : red;
                     }
-                    button {
+                    a {
                         font-weight: bold;
                         background-color: #626F47;
                         color : white;
@@ -108,19 +108,26 @@
                         margin-top: 20px;
                         padding-left: 20px;
                         padding-right: 20px;
+                        text-decoration: none;
+                    }
+                    img {
+                        width: 50%;
+                        height: 100px;
+                        object-fit: cover;
+                        border-radius: 10px;
                     }
 
                 }
             }
             nav {
                 background-color: #F5ECD5;
-                margin-bottom: 0;
                 display: flex;
                 justify-content: space-evenly;
                 position: fixed;
+                align-items: center;
                 bottom: 0;
                 left: 0;
-                width: 100%;
+                right: 0;
                 padding: 10px;
                 box-sizing: border-box;
                 height: 60px;
@@ -158,13 +165,13 @@
                     <h1>Pengumuman</h1>
                     <span>Gulir ke bawah untuk lihat seluruh pengumuman</span>
                 </div>
-                <div class="card" th:each="pengumuman : ${pengumumanList}"?>
+                <div class="card" th:each="pengumuman : ${pengumumanList}">
                     <div class="card-pengumuman">
                         <h2 th:text="${pengumuman.jenis}"></h2>
                         <span th:text="${pengumuman.lokasi}"></span>
                         <span th:text="${pengumuman.tanggal}"></span>
                         <span th:text="${pengumuman.catatan}"></span>
-                        <button id="detail-pengumuman">Lihat Detail</button>
+                        <a id="detail-pengumuman" href="detail_pengumuman.html">Lihat Detail</a>
                     </div>
                     <img th:src="@{'/assets/' + ${pengumuman.gambar}}" alt="gambar-pengumuman">
                 </div>
