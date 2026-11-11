@@ -47,7 +47,32 @@
                     }
 
                 }
+                #waktu-pengumuman {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 30px;
+                    #isi-waktu {
+                        margin-top: 20px;
+                    }
+
+                }
               }
+            }
+
+            .log {
+               margin: 20px; 
+               .card-log {
+                background-color: #626F47;
+                color: white;
+                padding: 10px;
+                border-radius: 10px;
+                display: flex;
+                flex-direction: row;
+                #isi-log {
+                    margin-top: 20px;
+                    margin-left: 50px;
+                }
+               }
             }
             
         </style>
@@ -77,11 +102,50 @@
                 </div>
 
                 <h2>Waktu Kejadian Pertama</h2>
-                
+                <div id="waktu-pengumuman">
+                    <div id="tipe-waktu">
+                        <h3>Tanggal</h3>
+                        <h3>Jam</h3>
+                    </div>
+                    <div id="isi-waktu">
+                        <span th:text="${pengumuman.tanggal}"></span>
+                        <span th:text="${pengumuman.jam}"></span>
+                    </div>
+                </div>
                 <h2>Foto Kejadian</h2>
+                <div id="gambar-pengumuman">
+                    <img th:src="@{'/assets/' + ${pengumuman.gambar}}" alt="gambar-pengumuman">
+                </div>
                 <h2>Catatan Petugas</h2>
+                <div id="catatan-pengumuman">
+                    <span th:text="${pengumuman.catatan}"></span>
+                </div>
+                <div 
             </div>
         </main>
+
+        <div class="log">
+            <h2>Log Penanganan</h2>
+            <div class="card" th:each="log : ${logList}">
+                <div class="card-log">
+                    <div id="teks-log">
+                        <h3>Badan Penangan</h3>
+                        <h3>Jumlah Personel</h3>
+                        <h3>Tanggal</h3>
+                        <h3>Aktivitas</h3>
+                        <h3>Foto Penanganan</h3>
+                        <img th:src="@{'/assets/' + ${log.gambar}}" alt="gambar-log">
+                    </div>
+                    <div id="isi-log">
+                        <span th:text="${badan-log}"></span>
+                        <span th:text="${personel-log}"></span>
+                        <span th:text="${tanggal-log}"></span>
+                        <span th:text="${aktvitas-log}"></span>
+                    </div>
+                    <div
+                </div>
+            </div>
+        </div>
     </body>
 </html>
 

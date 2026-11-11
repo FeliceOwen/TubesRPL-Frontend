@@ -95,7 +95,7 @@
                         font-weight: bold;
                         margin-bottom: 20px;
                     }
-                    span:nth-child(3) {
+                    span:nth-child(4) {
                         font-weight: bold;
                         color : red;
                     }
@@ -170,6 +170,7 @@
                         <h2 th:text="${pengumuman.jenis}"></h2>
                         <span th:text="${pengumuman.lokasi}"></span>
                         <span th:text="${pengumuman.tanggal}"></span>
+                        <span th:text="${pengumuman.jam}"></span>
                         <span th:text="${pengumuman.catatan}"></span>
                         <a id="detail-pengumuman" href="detail_pengumuman.html">Lihat Detail</a>
                     </div>
