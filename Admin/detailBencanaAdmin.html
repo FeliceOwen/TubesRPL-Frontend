@@ -1,0 +1,275 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Bencana</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: white;
+        }
+
+        header {
+            background-color: #626F47;
+            color: #F5ECD5;
+            padding: 12px 16px;
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        main {
+            padding: 16px 24px;
+        }
+
+        .back {
+            margin-bottom: 16px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .back a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .container {
+            background-color: #F5ECD5;
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        /* Bagian kiri */
+        .detail {
+            flex: 1;
+        }
+
+        .judul {
+            color: #626F47;
+            font-size: 20px;
+            margin: 0 0 12px;
+        }
+
+        .informasi {
+            display: grid;
+            grid-template-columns: 130px 1fr;
+            row-gap: 5px;
+            font-size: 13px;
+            color: #626262;
+        }
+
+        .informasi .label {
+            font-weight: bold;
+        }
+
+        .foto {
+            margin-top: 12px;
+        }
+
+        .foto p {
+            font-weight: bold;
+            font-size: 13px;
+            margin-bottom: 5px;
+            color: #626262;
+        }
+
+        .foto img {
+            width: 180px;
+            height: 110px;
+            object-fit: cover;
+        }
+
+        /* Bagian kanan */
+        .penanganan {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .status {
+            text-align: right;
+            font-weight: bold;
+            color: #626262;
+            font-size: 14px;
+            margin-bottom: 32px;
+        }
+
+        .penanganan h2 {
+            font-size: 18px;
+            margin: 0 0 4px;
+        }
+
+        .log {
+            background-color: #626F47;
+            color: white;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 12px;
+        }
+
+        .log-info {
+            display: grid;
+            grid-template-columns: 125px 1fr;
+            row-gap: 5px;
+        }
+
+        .log-info .label {
+            font-weight: bold;
+        }
+
+        .foto-penanganan {
+            margin-top: 12px;
+        }
+
+        .foto-penanganan p {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .foto-penanganan img {
+            width: 180px;
+            height: 90px;
+            object-fit: cover;
+        }
+
+        /* Responsive */
+        @media (max-width: 650px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .status {
+                margin-bottom: 16px;
+            }
+
+            .informasi,
+            .log-info {
+                grid-template-columns: 120px 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>SiapSiaga</header>
+
+    <main>
+
+        <div class="back">
+            <a href="laporanWargaAdmin.html">
+            <img src="../assets/back-black.png">
+            Detail
+            </a>
+        </div>
+
+        <div class="container">
+
+            <section class="detail">
+
+                <h2 class="judul">Gempa</h2>
+
+                <div class="informasi">
+
+                    <div class="label">Jenis Bencana</div>
+                    <div th:text="${laporan.jenisBencana}">-</div>
+
+                    <div class="label">Tanggal Kejadian</div>
+                    <div th:text="${laporan.tanggalKejadian}">-</div>
+
+                    <div class="label">Waktu Kejadian</div>
+                    <div th:text="${laporan.waktuKejadian}">-</div>
+
+                    <div></div>
+                    <div></div>
+
+                    <div class="label">Provinsi</div>
+                    <div th:text="${laporan.provinsi}">-</div>
+
+                    <div class="label">Kabupaten / Kota</div>
+                    <div th:text="${laporan.kota}">-</div>
+
+                    <div class="label">Kecamatan</div>
+                    <div th:text="${laporan.kecamatan}">-</div>
+
+                    <div class="label">Kelurahan</div>
+                    <div th:text="${laporan.kelurahan}">-</div>
+
+                    <div class="label">Sekolah</div>
+                    <div th:text="${laporan.sekolah}">-</div>
+
+                    <div class="label">Alamat</div>
+                    <div th:text="${laporan.alamat}">-</div>
+
+                </div>
+
+                <div class="foto">
+                    <p>Foto Kejadian</p>
+                    <img th:src="@{${laporan.fotoKejadian}}"
+                         alt="Foto Kejadian">
+                </div>
+
+            </section>
+
+
+            <section class="penanganan">
+
+                <div class="status"
+                     th:text="${laporan.status}">
+                    Terverifikasi
+                </div>
+
+                <h2>Log Penanganan</h2>
+
+                <div class="log">
+
+                    <div class="log-info">
+
+                        <div class="label">Badan Penanganan</div>
+                        <div th:text="${penanganan.badanPenanganan}">-</div>
+
+                        <div class="label">Jumlah Personel</div>
+                        <div>
+                            <span th:text="${penanganan.jumlahPersonel}">
+                                -
+                            </span> orang
+                        </div>
+
+                        <div class="label">Tanggal</div>
+                        <div th:text="${penanganan.tanggal}">
+                            -
+                        </div>
+
+                        <div class="label">Aktivitas</div>
+                        <div th:text="${penanganan.aktivitas}">
+                            -
+                        </div>
+
+                    </div>
+
+                    <div class="foto-penanganan">
+                        <p>Foto Penanganan</p>
+                        <img th:src="@{${penanganan.fotoPenanganan}}"
+                             alt="Foto Penanganan">
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+</body>
+</html>
