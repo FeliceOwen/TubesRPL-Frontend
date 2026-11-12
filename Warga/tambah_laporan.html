@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Instruksi Buat Laporan</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <style>
+            * {
+                font-family: 'Inter', sans-serif;
+            }
+            header {
+                display: flex;
+                margin: 30px;
+                a {
+                    margin-top: 5px;
+                }
+                h1 {
+                    margin: 0;
+                    margin-left: 10px;
+                    font-weight: bold;
+                    font-size: 25px;
+                }
+            }
+
+            body {
+                main {
+                    background-color: #F5ECD5;
+                    border-radius: 10px;
+                    margin: 10px;
+                    padding: 10px;
+                    padding-top: 1px;
+                    width: 100%;
+                    box-sizing: border-box;
+                }
+                div#bencana, div#lokasi {
+                    label {
+                        width: 175px;
+                        flex-shrink: 0;
+                    }
+                    span{
+                        display: flex;
+                        margin-bottom: 10px;
+                        justify-content: space-between;
+                    }
+                }
+                div#catatan {
+                    textarea {
+                        width :100%;
+                        box-sizing: border-box;
+                    }
+                }
+
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <a href="instruksi.html">
+                <img src="../assets/back-black.png" value="back">
+            </a>
+            <h1>Buat Laporan Bencana</h1>
+        </header>
+        <main>
+            <!-- to do -->
+            <form method="get" action="">
+                <div id="bencana">
+                    <h2>Bencana</h2>
+                    <span id="jenis-bencana">
+                        <label for="pilih-bencana">Jenis Bencana</label>
+                        <!-- atau harus pake database? -->
+                        <select id="pilih-bencana" name="jenis-bencana">
+                            <option value="">Pilih Jenis Bencana</option>
+                            <option value="keracunan-mbg">Keracunan MBG</option>
+                            <option value="gempa">Gempa</option>
+                            <option value="kebakaran">Kebakaran</option>
+                            <option value="gunung-meletus">Gunung Meletus</option>
+                            <option value="banjir">Banjir</option>
+                            <option value="tsunami">Tsunami</option>
+                        </select>
+                    </span>
+                    <span id="tanggal-bencana">
+                        <label>Tanggal Kejadian</label>
+                        <input id="tanggal-kejadian" type="date">
+                    </span>
+                    <span id="waktu-bencana">
+                        <label>Waktu Kejadian</label>
+                        <input id="waktu-kejadian" type="time">
+                    </span>
+                    <span id="foto-bencana">
+                        <label>Foto Kejadian</label>
+                        <input id="foto-kejadian" type="file">
+                    </span>
+                </div>
+
+                <div id="lokasi">
+                    <h2>Lokasi</h2>
+                    <span id="provinsi-bencana">
+                        <label for="provinsi-kejadian">Provinsi</label>
+                        <select id="provinsi-kejadian" name="provinsi-bencana">
+                            <!-- masukin data dari data base -->
+                        </select>
+                    </span>
+                    <span id="kabkot-bencana">
+                        <label for="kabkot-kejadian">Kabupaten / Kota</label>
+                        <select id="kabkot-kejadian" name="kabkot-bencana">
+                            <!-- masukin data dari data base -->
+                        </select>
+                    </span>
+                    <span id="kecamatan-bencana">
+                        <label for="kecamatan-kejadian">Kecamatan</label>
+                        <select id="kecamatan-kejadian" name="kecamatan-bencana">
+                            <!-- masukin data dari data base -->
+                        </select>
+                    </span>
+                    <span id="kelurahan-bencana">
+                        <label for="kelurahan-bencana">Kelurahan</label>
+                        <select id="kelurahan-kejadian" name="kelurahan-bencana">
+                            <!-- masukin data dari data base -->
+                        </select>
+                    </span>
+                    <span id="sekolah-bencana">
+                        <label for="sekolah-kejadian">Sekolah</label>
+                        <select id="sekolah-kejadian" name="sekolah-bencana">
+                            <!-- masukin data dari data base -->
+                        </select>
+                    </span>
+                    <span id="alamat-bencana">
+                        <label for="alamat-bencana">Alamat</label>
+                        <input type="text" id="alamat-kejadian">
+                    </span>
+                </div>
+
+                <div id="catatan">
+                    <h2>Catatan</h2>
+                    <textarea id="catatan-kejadian">Tambah catatan kejadian di sini</textarea>
+                </div>
+                
+            </form>
+        </main>
+        
+    </body>
+</html>

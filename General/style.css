@@ -181,14 +181,14 @@ svg {
   content: "";
   width: 22px;
   height: 22px;
-  background-image: url("../assets/icons/eye.png");
+  background-image: url("../assets/icons/eye-off.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
 }
 
 .toggle[aria-pressed="true"]::before {
-  background-image: url("../assets/icons/eye-off.png");
+  background-image: url("../assets/icons/eye.png");
 }
 
 .btn {

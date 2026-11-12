@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Instruksi Buat Laporan</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <style>
+            * {
+                font-family: 'Inter', sans-serif;
+            }
+            header {
+                display: flex;
+                margin: 30px;
+                a {
+                    margin-top: 5px;
+                }
+                h1 {
+                    margin: 0;
+                    margin-left: 10px;
+                    font-weight: bold;
+                    font-size: 25px;
+                }
+            }
+
+            body {
+                display: flex;
+                flex-direction: column;
+                main {
+                    margin-bottom: 175px;
+                }
+                #jenis-laporan, #lokasi {
+                    background-color: #F5ECD5;
+                    padding: 10px;
+                    border-radius: 10px;
+                    margin: 20px;
+                    padding-top: 3px;
+                    p {
+                        color: #5D5D5D;
+                    }
+                }
+                footer {
+                    margin-top: auto;
+                    display: block;
+                    background-color: #626F47;
+                    padding: 20px;
+                    border-radius: 10px;
+                    font-weight: bold;
+                    margin: 20px;
+                    text-align: center;
+                    a {
+                        text-decoration: none;
+                        color: white;
+                    }
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <a href="index.html">
+                <img src="../assets/back-black.png" value="back">
+            </a>
+            <h1>Sudah Siap untuk Lapor Bencana?</h1>
+        </header>
+        <main>
+            <div id="jenis-laporan">
+                <h1>Jenis Laporan</h1>
+                <p>Laporkan hanya kejadian bencana yang benar-benar terjadi, dapat dicek langsung di tempat kejadian, dan memerlukan bantuan penanganan</p>
+            </div>
+
+            <div id="lokasi">
+                <h1>Lokasi</h1>
+                <p>Laporkan lokasi bencana dengan detail mulai dari Provinsi, Kabupaten, Kota, Kecamatan hingga Kelurahan. Lokasi harus lengkap agar penanganan bisa dilakukan dengan cepat</p>
+            </div>
+        </main>
+        <footer>
+            <a href="tambah_laporan.html">Lapor Sekarang</a>
+        </footer>
+    </body>
+</html>

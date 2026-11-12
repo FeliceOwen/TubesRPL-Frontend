@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0px;   
+        }
+        header {
+            background-color: #626F47;
+        }
+        header h1 {
+            margin: 0px;
+            padding: 10px;
+            color: #F5ECD5;
+        }
+
+        div#content {
+            background-color: #FFFFFF;
+            margin: 0px;
+            padding: 10px 40px 110px;
+        }
+
+        div#statistik {
+            display: flex;
+            justify-content: space-around;
+            align-items: stretch;
+            gap: 10px; 
+        }
+
+        div#statistik .bencana{
+            background-color: #F5ECD5;
+            text-align: center;
+            flex: 1;
+            border-radius: 8px;
+            padding: 12px 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        div#pengumuman {
+            background-color: #F5ECD5;
+            margin: 0px;
+            display: flex;
+            flex-direction: row;       
+            align-items: flex-start;
+            gap: 18px;
+            padding: 14px 20px;
+            border-radius: 8px;
+        }
+
+        div#pengumuman div#isiPengumuman {
+
+        }
+
+        div#pengumuman div#foto {
+            flex-shrink: 0;
+            width: 80px;
+            height: 80px;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+
+        nav {
+            background-color: #F5ECD5;
+            display: flex;
+            justify-content: space-evenly;
+            position: fixed;
+            align-items: center;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 10px;
+            box-sizing: border-box;
+            height: 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>SiapSiaga</h1>
+    </header>
+
+    <div id="content">
+        <h3>Statistik Bencana</h3>
+        <div id="statistik">
+            
+            <div class="bencana">
+                <p class="nama">Kebakaran</p>
+                <p class="jumlah">1902</p>
+            </div>
+            
+            <div class="bencana">
+                <p class="nama">Gempa</p>
+                <p class="jumlah">1290</p>
+            </div>
+            
+            <div class="bencana">
+                <p class="nama">Keracunan Makanan</p>
+                <p class="jumlah">30</p>
+            </div>
+            
+            <div class="bencana">
+                <p class="nama">Banjir</p>
+                <p class="jumlah">232</p>
+            </div>
+
+            <div class="bencana">
+                <p class="nama">Tanah Longsor</p>
+                <p class="jumlah">10</p>
+            </div>
+
+        </div>
+
+        <h3>Pengumuman</h3>
+        <div id = "pengumuman">
+
+            <div id="foto"> 
+                <img src="../assets/gunung_meletus.jpg"> 
+            </div>
+
+            <div id="isiPengumuman">                
+                <h2>Gunung Meletus</h2>
+                <p>Lembang,Bandung,Jawa Barat</p>
+                <p>20 Agustus 2026</p>
+                <p>09.32</p>
+                <p><b>Catatan Petugas: </b></p>
+                <p style="color: red;">Waspada abu vulkanik</p>
+            </div>
+        </div>
+    </div>
+
+    <nav>
+            <a href="dashboardAdmin.html">
+                <img src="../assets/dashboard-green.png" value="dashboard"> 
+            </a>
+
+            <a href="reportAdmin.html">
+                <img src="../assets/report-black.png" value="laporan">
+            </a>
+
+            <a href="importData.html">
+                <img src="../assets/importData-black.png" value="import" width="38" height="38"> 
+            </a>
+
+            <a href="profileAdmin.html">
+                <img src="../assets/profile-black.png" value="profil">
+            </a>
+        </nav>
+</body>
+</html>

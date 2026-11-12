@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="id" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Edit Pengumuman Bencana | SiapSiaga</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            }
+
+            body {
+                background-color: #ffffff;
+                color: #333333;
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+            }
+
+            header {
+                background-color: #626f47;
+                padding: 24px 40px;
+                width: 100%;
+            }
+
+            header h1 {
+                color: #f5ecd5;
+                font-size: 2.5rem;
+                font-weight: 700;
+                letter-spacing: -0.5px;
+            }
+
+            main {
+                flex: 1;
+                padding: 30px 40px;
+                max-width: 1200px;
+                margin: 0 auto;
+                width: 100%;
+            }
+
+            .page-title-container {
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                margin-bottom: 24px;
+            }
+
+            .btn-back {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                text-decoration: none;
+                transition: opacity 0.2s;
+            }
+
+            .btn-back:hover {
+                opacity: 0.7;
+            }
+
+            .btn-back-image {
+                width: 24px;
+                height: 24px;
+                object-fit: contain;
+                display: block;
+            }
+
+            .page-title {
+                font-size: 1.8rem;
+                font-weight: 800;
+                color: #000000;
+            }
+
+            .form-card {
+                background-color: #f5ecd5;
+                border-radius: 16px;
+                padding: 32px 40px;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+
+            @media (max-width: 900px) {
+                .form-card {
+                    grid-template-columns: 1fr;
+                    gap: 24px;
+                }
+            }
+
+            .form-column {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .form-group {
+                display: grid;
+                grid-template-columns: 160px 1fr;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .form-group.top-aligned {
+                align-items: flex-start;
+            }
+
+            .form-group label {
+                font-size: 1.05rem;
+                color: #555555;
+                font-weight: 500;
+            }
+
+            .readonly-value {
+                font-size: 0.95rem;
+                font-weight: 600;
+                color: #111111;
+                line-height: 1.4;
+            }
+
+            .input-control {
+                width: 100%;
+                padding: 10px 14px;
+                border: 1px solid #c8c2b0;
+                border-radius: 8px;
+                background-color: #ffffff;
+                font-size: 0.95rem;
+                color: #333333;
+                outline: none;
+                transition: border-color 0.2s;
+            }
+
+            .input-control:focus {
+                border-color: #626f47;
+            }
+
+            textarea.input-control {
+                resize: none;
+                min-height: 85px;
+                font-family: inherit;
+            }
+
+            .image-preview-container {
+                width: 100%;
+                max-width: 240px;
+            }
+
+            .image-preview {
+                width: 100%;
+                height: 140px;
+                object-fit: cover;
+                border-radius: 8px;
+                display: block;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            .image-placeholder-box {
+                width: 100%;
+                height: 140px;
+                background-color: #e2dbca;
+                border: 1px dashed #c8c2b0;
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #666666;
+                font-size: 0.85rem;
+            }
+
+            .notes-column {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            .notes-section-title {
+                font-size: 1.8rem;
+                font-weight: 800;
+                color: #000000;
+                margin-bottom: 20px;
+            }
+
+            .notes-textarea {
+                width: 100%;
+                height: 180px;
+                padding: 16px;
+                border: 1px solid #c8c2b0;
+                border-radius: 12px;
+                background-color: #ffffff;
+                font-size: 0.95rem;
+                color: #333333;
+                resize: none;
+                outline: none;
+                font-family: inherit;
+            }
+
+            .notes-textarea:focus {
+                border-color: #626f47;
+            }
+
+            .action-container {
+                display: flex;
+                justify-content: flex-end;
+                margin-top: 24px;
+            }
+
+            .btn-submit {
+                background-color: #626f47;
+                color: #ffffff;
+                border: none;
+                padding: 12px 32px;
+                border-radius: 10px;
+                font-size: 1.05rem;
+                font-weight: 700;
+                cursor: pointer;
+                transition: background-color 0.2s, transform 0.1s;
+            }
+
+            .btn-submit:hover {
+                background-color: #4f5a39;
+            }
+
+            .btn-submit:active {
+                transform: scale(0.98);
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>SiapSiaga</h1>
+        </header>
+
+        <main>
+            <div class="page-title-container">
+                <a th:href="@{/dashboard-petugas}" href="DashboardPetugas.html" class="btn-back" title="Kembali">
+                    <img th:src="@{/assets/back-black.png}" src="../assets/back-black.png" alt="Kembali" class="btn-back-image">
+                </a>
+                <h2 class="page-title">Edit Pengumuman Bencana</h2>
+            </div>
+
+            <form class="form-card" 
+                  th:action="${pengumuman != null ? '/pengumuman/update/' + pengumuman.id : '#'}" 
+                  method="POST">
+
+                <div class="form-column">
+                    <div class="form-group">
+                        <label>Jenis Bencana</label>
+                        <div class="readonly-value" th:text="${pengumuman?.jenisBencana ?: '-'}">-</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tanggal Kejadian</label>
+                        <div class="readonly-value" th:text="${pengumuman?.tanggalLaporan != null ? #temporals.format(pengumuman.tanggalLaporan, 'dd/MM/yyyy') : '-'}">-</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Waktu Kejadian</label>
+                        <div class="readonly-value" th:text="${pengumuman?.waktuLaporan != null ? #temporals.format(pengumuman.waktuLaporan, 'HH:mm') : '-'}">-</div>
+                    </div>
+
+                    <div class="form-group top-aligned">
+                        <label>Foto Kejadian</label>
+                        <div class="image-preview-container">
+                            <img th:if="${pengumuman?.foto != null}" 
+                                 th:src="${pengumuman.foto}" 
+                                 alt="Foto Bencana" 
+                                 class="image-preview">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Provinsi</label>
+                        <div class="readonly-value" th:text="${pengumuman?.provinsi ?: '-'}">-</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Kabupaten / Kota</label>
+                        <div class="readonly-value" th:text="${pengumuman?.kabupaten ?: '-'}">-</div>
+                    </div>
+
+                    <div class="form-group top-aligned">
+                        <label for="detail_lokasi">Detail Lokasi</label>
+                        <textarea id="detail_lokasi" 
+                                  name="detailLokasi" 
+                                  class="input-control"
+                                  placeholder="Isi detail lokasi daerah yang terdampak"
+                                  th:text="${pengumuman?.detailLokasi ?: ''}"></textarea>
+                    </div>
+                </div>
+
+                <div class="notes-column">
+                    <div>
+                        <h3 class="notes-section-title">Catatan Pengumuman</h3>
+                        <textarea name="catatanPetugas" 
+                                  class="notes-textarea" 
+                                  placeholder="Tulis catatan pengumuman disini" 
+                                  required
+                                  th:text="${pengumuman?.catatanPetugas ?: ''}"></textarea>
+                    </div>
+
+                    <div class="action-container">
+                        <button type="submit" class="btn-submit">Simpan Perubahan</button>
+                    </div>
+                </div>
+            </form>
+        </main>
+    </body>
+</html>
