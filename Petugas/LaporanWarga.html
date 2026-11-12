@@ -304,10 +304,11 @@
             }
         }
     </style>
+
+    <script src="script.js" defer></script>
 </head>
 
 <body>
-
     <header>
         <h1>SiapSiaga</h1>
     </header>
@@ -317,6 +318,7 @@
         <div class="top-bar">
             <h2 class="page-title">Laporan Warga</h2>
 
+            <!-- Value option disesuaikan agar sama dengan nilai status pada card -->
             <select class="filter-select" id="status_verifikasi">
                 <option value="semua">Semua</option>
                 <option value="Resmi">Terverifikasi</option>
@@ -327,6 +329,8 @@
         </div>
 
         <div class="reports-list" id="reportsList">
+            
+            <!-- Dynamic Card (Thymeleaf Loop) -->
             <div class="report-card" th:each="laporan : ${listLaporan}" th:attr="data-status=${laporan.status}">
                 <h3 class="report-title" th:text="${laporan.jenisBencana}">Jenis Bencana</h3>
 
@@ -334,28 +338,6 @@
                     <img src="../assets/triangle.png" class="alert-icon" alt="Peringatan">
                     <span class="alert-text">Bencana Baru!</span>
                 </div>
-
-                <!--
-                <div class="badge-status status-resmi"
-                     th:if="${laporan.status == 'Resmi'}">
-                    Terverifikasi
-                </div>
-
-                <div class="badge-status status-tidak-resmi"
-                     th:if="${laporan.status == 'Tidak Resmi'}">
-                    Tidak Terverifikasi
-                </div>
-
-                <div class="badge-status status-progress"
-                     th:if="${laporan.status == 'On Progress'}">
-                    Sedang Ditangani
-                </div>
-
-                <div class="badge-status status-closed"
-                     th:if="${laporan.status == 'Closed'}">
-                    Selesai
-                </div>
-                -->
 
                 <div class="report-details">
                     <span class="label">Lokasi</span>
@@ -377,8 +359,8 @@
                 </div>
             </div>
 
-            <!-- 2. Contoh Card Terverifikasi -->
-            <div class="report-card">
+            <!-- Static Card 2: Ditambahkan data-status="Resmi" -->
+            <div class="report-card" data-status="Resmi">
                 <div class="badge-status status-resmi">Terverifikasi</div>
                 <h3 class="report-title" th:text="${laporan.jenisBencana}">Jenis Bencana</h3>
                 <div class="report-details">
@@ -400,8 +382,9 @@
                 </div>
             </div>
 
-            <div class="report-card">
-                <div class="badge-status status-menunggu">Menunggu Terverifikasi</div>
+            <!-- Static Card 3: Ditambahkan data-status="Menunggu Verifikasi" -->
+            <div class="report-card" data-status="Menunggu Verifikasi">
+                <div class="badge-status status-menunggu">Menunggu Verifikasi</div>
                 <h3 class="report-title" th:text="${laporan.jenisBencana}">Jenis Bencana</h3>
                 <div class="report-details">
                     <span class="label">Lokasi</span>
@@ -418,44 +401,19 @@
                     <a th:if="${laporan.status == 'Resmi'}" th:href="@{/pengumuman/tambah/{id}(id=${laporan.id})}" class="btn-action">Tambah Pengumuman</a>
                 </div>
             </div>
-
-            <!--
-            <div class="empty-state"
-                 th:if="${listLaporan == null or #lists.isEmpty(listLaporan)}">
-
-                <h3>Belum Ada Laporan</h3>
-                <p>
-                    Saat ini belum ada laporan bencana
-                    yang masuk dari Warga.
-                </p>
-            -->
-            </div>
-
         </div>
-
     </main>
 
     <nav class="bottom-nav">
-
         <a href="DashboardPetugas.html" class="nav-item">
-            <img src="../assets/home-black.png"
-                 alt="Beranda"
-                 class="nav-icon">
+            <img src="../assets/home-black.png" alt="Beranda" class="nav-icon">
         </a>
-
         <a href="#" class="nav-item active">
-            <img src="../assets/report-green.png"
-                 alt="Laporan"
-                 class="nav-icon">
+            <img src="../assets/report-green.png" alt="Laporan" class="nav-icon">
         </a>
-
         <a href="#" class="nav-item">
-            <img src="../assets/profile-black.png"
-                 alt="Profil"
-                 class="nav-icon">
+            <img src="../assets/profile-black.png" alt="Profil" class="nav-icon">
         </a>
-
     </nav>
-
 </body>
 </html>
