@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="id" xmlns="https://www.thymeleaf.org">
+<html lang="id" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Edit Pengumuman Bencana</title>
+        <title>Edit Pengumuman Bencana | SiapSiaga</title>
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -65,7 +65,7 @@
                 opacity: 0.7;
             }
 
-            .btn-back.img {
+            .btn-back-image {
                 width: 24px;
                 height: 24px;
                 object-fit: contain;
@@ -117,9 +117,16 @@
                 font-weight: 500;
             }
 
+            .readonly-value {
+                font-size: 0.95rem;
+                font-weight: 600;
+                color: #111111;
+                line-height: 1.4;
+            }
+
             .input-control {
                 width: 100%;
-                padding: 8px 14px;
+                padding: 10px 14px;
                 border: 1px solid #c8c2b0;
                 border-radius: 8px;
                 background-color: #ffffff;
@@ -135,7 +142,7 @@
 
             textarea.input-control {
                 resize: none;
-                min-height: 80px;
+                min-height: 85px;
                 font-family: inherit;
             }
 
@@ -153,6 +160,19 @@
                 box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
             }
 
+            .image-placeholder-box {
+                width: 100%;
+                height: 140px;
+                background-color: #e2dbca;
+                border: 1px dashed #c8c2b0;
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #666666;
+                font-size: 0.85rem;
+            }
+
             .notes-column {
                 display: flex;
                 flex-direction: column;
@@ -168,7 +188,7 @@
 
             .notes-textarea {
                 width: 100%;
-                height: 160px;
+                height: 180px;
                 padding: 16px;
                 border: 1px solid #c8c2b0;
                 border-radius: 12px;
@@ -177,6 +197,7 @@
                 color: #333333;
                 resize: none;
                 outline: none;
+                font-family: inherit;
             }
 
             .notes-textarea:focus {
@@ -198,7 +219,7 @@
                 font-size: 1.05rem;
                 font-weight: 700;
                 cursor: pointer;
-                transition: backgroung-color 0.2s, transform 0.1s;
+                transition: background-color 0.2s, transform 0.1s;
             }
 
             .btn-submit:hover {
@@ -217,64 +238,76 @@
 
         <main>
             <div class="page-title-container">
-                <a href="DashboardPetugas.html" class="btn-back" title="Kembali">
-                    <img src="../assets/back-black.png" alt="Kembali" class="btn-back-image">
+                <a th:href="@{/dashboard-petugas}" href="DashboardPetugas.html" class="btn-back" title="Kembali">
+                    <img th:src="@{/assets/back-black.png}" src="../assets/back-black.png" alt="Kembali" class="btn-back-image">
                 </a>
                 <h2 class="page-title">Edit Pengumuman Bencana</h2>
             </div>
 
-            <form class="form-card" onsubmit="event.preventDefault">
+            <form class="form-card" 
+                  th:action="${pengumuman != null ? '/pengumuman/update/' + pengumuman.id : '#'}" 
+                  method="POST">
+
                 <div class="form-column">
                     <div class="form-group">
-                        <label for="jenisBencana">Jenis Bencana</label>
-                        <input type="text" id="nama_bencana" class="input-control" value="" placeholder="Masukkan jenis bencana">
+                        <label>Jenis Bencana</label>
+                        <div class="readonly-value" th:text="${pengumuman?.jenisBencana ?: '-'}">-</div>
                     </div>
 
                     <div class="form-group">
-                        <label for="tanggalKejadian">Tanggal Kejadian</label>
-                        <input type="date" id="tanggal_kejadian" class="input-control">
+                        <label>Tanggal Kejadian</label>
+                        <div class="readonly-value" th:text="${pengumuman?.tanggalLaporan != null ? #temporals.format(pengumuman.tanggalLaporan, 'dd/MM/yyyy') : '-'}">-</div>
                     </div>
 
                     <div class="form-group">
-                        <label for="waktuKejadian">Waktu Kejadian</label>
-                        <input type="time" id="jam_kejadian" class="input-control">
+                        <label>Waktu Kejadian</label>
+                        <div class="readonly-value" th:text="${pengumuman?.waktuLaporan != null ? #temporals.format(pengumuman.waktuLaporan, 'HH:mm') : '-'}">-</div>
                     </div>
 
                     <div class="form-group top-aligned">
-                        <label for="fotoKejadian">Foto Kejadian</label>
+                        <label>Foto Kejadian</label>
                         <div class="image-preview-container">
-                            <label for="inputFoto" class="image-placeholder">
-                                <img src="${pengumuman.foto}" alt="Foto Bencana">
-                            </label>
+                            <img th:if="${pengumuman?.foto != null}" 
+                                 th:src="${pengumuman.foto}" 
+                                 alt="Foto Bencana" 
+                                 class="image-preview">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="Provinsi">Provinsi</label>
-                        <input type="text" id="nama_provinsi" class="input-control" value="" placeholder="Masukkan provinsi">
+                        <label>Provinsi</label>
+                        <div class="readonly-value" th:text="${pengumuman?.provinsi ?: '-'}">-</div>
                     </div>
 
                     <div class="form-group">
-                        <label for="kabupatenKota">Kabupaten / Kota</label>
-                        <input type="text" id="nama_kota_kab" class="input-control" value="" placeholder="Masukkan kabupaten/kota">
+                        <label>Kabupaten / Kota</label>
+                        <div class="readonly-value" th:text="${pengumuman?.kabupaten ?: '-'}">-</div>
                     </div>
 
                     <div class="form-group top-aligned">
-                        <label for="detailLokasi">Detail Lokasi</label>
-                        <textarea id="detail_lokasi" class="input-control" placeholder="Masukkan detail lokasi"></textarea>
+                        <label for="detail_lokasi">Detail Lokasi</label>
+                        <textarea id="detail_lokasi" 
+                                  name="detailLokasi" 
+                                  class="input-control"
+                                  placeholder="Isi detail lokasi daerah yang terdampak"
+                                  th:text="${pengumuman?.detailLokasi ?: ''}"></textarea>
                     </div>
+                </div>
+
+                <div class="notes-column">
+                    <div>
+                        <h3 class="notes-section-title">Catatan Pengumuman</h3>
+                        <textarea name="catatanPetugas" 
+                                  class="notes-textarea" 
+                                  placeholder="Tulis catatan pengumuman disini" 
+                                  required
+                                  th:text="${pengumuman?.catatanPetugas ?: ''}"></textarea>
                     </div>
 
-                    <div class="notes-column">
-                        <div>
-                            <h3 class="notes-section-title">Catatan Pengumuman</h3>
-                            <textarea class="notes-textarea" placeholder="Tulis catatan pengumuman disini"></textarea>
-                        </div>
-
-                        <div class="action-container">
-                            <button type="submit" class="btn-submit">Edit Pengumuman</button>
-                        </div>
+                    <div class="action-container">
+                        <button type="submit" class="btn-submit">Simpan Perubahan</button>
                     </div>
+                </div>
             </form>
         </main>
     </body>
