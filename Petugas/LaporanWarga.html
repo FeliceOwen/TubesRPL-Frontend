@@ -330,7 +330,6 @@
 
         <div class="reports-list" id="reportsList">
             
-            <!-- Dynamic Card (Thymeleaf Loop) -->
             <div class="report-card" th:each="laporan : ${listLaporan}" th:attr="data-status=${laporan.status}">
                 <h3 class="report-title" th:text="${laporan.jenisBencana}">Jenis Bencana</h3>
 
@@ -355,11 +354,10 @@
 
                 <div class="action-buttons">
                     <a th:href="@{/laporan/detail/{id}(id=${laporan.id})}" class="btn-action">Lihat Detail</a>
-                    <a th:if="${laporan.status == 'Resmi'}" th:href="@{/pengumuman/tambah/{id}(id=${laporan.id})}" class="btn-action">Tambah Pengumuman</a>
+                    <a th:if="${laporan.status == 'Baru'}" th:href="@{/pengumuman/tambah/{id}(id=${laporan.id})}" class="btn-action">Tambah Pengumuman</a>
                 </div>
             </div>
 
-            <!-- Static Card 2: Ditambahkan data-status="Resmi" -->
             <div class="report-card" data-status="Resmi">
                 <div class="badge-status status-resmi">Terverifikasi</div>
                 <h3 class="report-title" th:text="${laporan.jenisBencana}">Jenis Bencana</h3>
@@ -377,12 +375,11 @@
                     <span class="value" th:text="${laporan.catatan ?: '-'}">-</span>
                 </div>
                 <div class="action-buttons">
-                    <a href="#" class="btn-action">Lihat Detail</a>
-                    <a href="#" class="btn-action">Tambah Pengumuman</a>
+                    <a th:href="@{/laporan/detail/{id}(id=${laporan.id})}" class="btn-action">Lihat Detail</a>
+                    <a th:if="${laporan.status == 'Resmi'}" th:href="@{/pengumuman/tambah/{id}(id=${laporan.id})}" href="TambahPengumuman.html" class="btn-action">Tambah Pengumuman</a>
                 </div>
             </div>
 
-            <!-- Static Card 3: Ditambahkan data-status="Menunggu Verifikasi" -->
             <div class="report-card" data-status="Menunggu Verifikasi">
                 <div class="badge-status status-menunggu">Menunggu Verifikasi</div>
                 <h3 class="report-title" th:text="${laporan.jenisBencana}">Jenis Bencana</h3>
@@ -398,14 +395,14 @@
                 </div>
                 <div class="action-buttons">
                     <a th:href="@{/laporan/detail/{id}(id=${laporan.id})}" class="btn-action">Lihat Detail</a>
-                    <a th:if="${laporan.status == 'Resmi'}" th:href="@{/pengumuman/tambah/{id}(id=${laporan.id})}" class="btn-action">Tambah Pengumuman</a>
+                    <a th:if="${laporan.status == 'Menunggu Verifikasi'}" th:href="@{/pengumuman/tambah/{id}(id=${laporan.id})}" href="TambahPengumuman.html" class="btn-action">Tambah Pengumuman</a>
                 </div>
             </div>
         </div>
     </main>
 
     <nav class="bottom-nav">
-        <a href="DashboardPetugas.html" class="nav-item">
+        <a th:href="@{/dashboard-petugas}" href="DashboardPetugas.html" class="nav-item">
             <img src="../assets/home-black.png" alt="Beranda" class="nav-icon">
         </a>
         <a href="#" class="nav-item active">
