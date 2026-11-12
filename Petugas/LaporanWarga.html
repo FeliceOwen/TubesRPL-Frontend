@@ -354,7 +354,7 @@
 
                 <div class="action-buttons">
                     <a th:href="@{/laporan/detail/{id}(id=${laporan.id})}" class="btn-action">Lihat Detail</a>
-                    <a th:if="${laporan.status == 'Baru'}" th:href="@{/pengumuman/tambah/{id}(id=${laporan.id})}" class="btn-action">Tambah Pengumuman</a>
+                    <a th:if="${laporan.status == 'Baru'}" th:href="@{/pengumuman/tambah/{id}(id=${laporan.id})}" href="TambahPengumuman.html" class="btn-action">Tambah Pengumuman</a>
                 </div>
             </div>
 
