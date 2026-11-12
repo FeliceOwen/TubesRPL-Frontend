@@ -233,21 +233,21 @@
                             <span th:text="${pengumuman.catatanPetugas}"></span>
                         </div>
                     </div>
-                    <a href="EditPengumuman.html" class="btn-edit">Edit</a>
+                    <a th:href="@{/edit-pengumuman}" href="EditPengumuman.html" class="btn-edit">Edit</a>
                 </div>
             </section>
         </main>
 
         <nav class="bottom-nav">
-            <a href="#" class="nav-item">
+            <a th:href="#" href="#" class="nav-item">
                 <img src="../assets/dashboard-green.png" alt="Beranda" class="nav-icon">
             </a>
 
-             <a href="#" class="nav-item">
+             <a th:href="@{/laporan-warga}" href="LaporanWarga.html" class="nav-item">
                 <img src="../assets/report-black.png" alt="Laporan" class="nav-icon">
             </a>
 
-            <a href="#" class="nav-item">
+            <a th:href="#" href="#" class="nav-item">
                 <img src="../assets/profile-black.png" alt="Profil" class="nav-icon">
             </a>
         </nav>
